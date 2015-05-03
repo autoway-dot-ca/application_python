@@ -105,6 +105,12 @@ end
 protected
 
 def install_packages
+  directory "#{new_resource.path}/shared" do
+    owner new_resource.owner
+    group new_resource.group
+    action :create
+  end
+
   python_virtualenv new_resource.virtualenv do
     path new_resource.virtualenv
     owner new_resource.owner
